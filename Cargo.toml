@@ -1,5 +1,5 @@
-# [workspace]
-# members = ["k8s-rsgen"]
+[workspace]
+members = ["k8s-rsgen"]
 
 [package]
 name = "k8s-client"
