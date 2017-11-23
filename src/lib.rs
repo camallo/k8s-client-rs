@@ -69,3 +69,5 @@ pub mod types;
 
 /// Convenience alias for a future stream of bytes.
 pub type StreamBlob = Box<futures::Stream<Item = hyper::Chunk, Error = errors::Error>>;
+
+pub mod v1_6;

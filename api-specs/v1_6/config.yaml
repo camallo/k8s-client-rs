@@ -1,0 +1,3 @@
+version: "1.6"
+base_dir: "api-specs/v1_6/"
+out_dir: "src/v1_6/"

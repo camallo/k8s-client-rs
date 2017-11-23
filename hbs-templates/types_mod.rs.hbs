@@ -1,0 +1,6 @@
+//! Kubernetes types and objects - version {{version}}.
+
+{{#each types_tags}}
+mod {{this}};
+pub use self::{{this}}::*;
+{{/each}}

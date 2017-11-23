@@ -1,0 +1,15 @@
+[package]
+name = "k8s-rsgen"
+version = "0.1.0"
+authors = ["Luca Bruno <luca.bruno@coreos.com>"]
+
+[dependencies]
+Inflector = "0.10"
+error-chain = "0.10"
+handlebars = "0.27"
+openapi = "0.1"
+regex = "0.2"
+serde_json = "*"
+serde = "*"
+serde_derive = "*"
+serde_yaml = "*"

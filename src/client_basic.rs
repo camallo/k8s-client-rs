@@ -8,7 +8,7 @@ use super::errors::*;
 
 use std::str::FromStr;
 
-/// Kubernetes HTTP client, non-versioned.
+/// Basic Kubernetes client, non-versioned.
 #[derive(Debug, Clone)]
 pub struct ClientBasic {
     pub(crate) base_url: String,
@@ -17,7 +17,7 @@ pub struct ClientBasic {
 }
 
 impl ClientBasic {
-    fn new_request(&self, method: hyper::Method, url: hyper::Uri) -> hyper::client::Request {
+    pub(crate) fn new_request(&self, method: hyper::Method, url: hyper::Uri) -> hyper::client::Request {
         let mut req = client::Request::new(method, url);
         let host = hyper::header::Host::new(self.hostname.clone(), None);
         req.headers_mut().set(host);

@@ -1,0 +1,45 @@
+//! Kubernetes remote API - version {{version}}.
+
+use hyper;
+
+{{#each ops_tags}}
+mod {{this}};
+pub use self::{{this}}::*;
+{{/each}}
+
+pub mod types;
+
+/// Build a v{{version}} client from configuration.
+pub trait BuildClientV{{nversion}} {
+    fn build_v{{uversion}}(self) -> Client;
+}
+
+impl BuildClientV{{nversion}} for super::ClientBuilder {
+    /// Return a `Client` to interact with the API server.
+    fn build_v{{uversion}}(self) -> Client {
+        let cb = self.build_basic();
+        Client(cb)
+    }
+}
+
+/// Kubernetes client, compatible with API version {{version}}.
+#[derive(Debug, Clone)]
+pub struct Client(super::ClientBasic);
+
+impl Client {
+    fn new_request(&self, method: hyper::Method, url: hyper::Uri) -> hyper::client::Request {
+        self.0.new_request(method, url)
+    }
+}
+
+impl From<super::ClientBasic> for Client {
+    fn from(cb: super::ClientBasic) -> Self {
+        Client(cb)
+    }
+}
+
+impl From<Client> for super::ClientBasic {
+    fn from(c: Client) -> Self {
+        c.0
+    }
+}
