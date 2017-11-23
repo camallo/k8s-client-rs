@@ -18,7 +18,7 @@ use std::{fs, io};
 
 fn main() {
     if let Err(e) = run() {
-        print!("{}", e.display());
+        print!("{}", e.display_chain());
         std::process::exit(1);
     };
 }
